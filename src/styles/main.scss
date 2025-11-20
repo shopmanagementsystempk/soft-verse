@@ -1,0 +1,123 @@
+:root {
+  --soft-dark: #0a2540;
+  --soft-blue: #3bafda;
+  --soft-light: #f4f6fb;
+  --soft-gray: #6c7a89;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', sans-serif;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background-color: #fff;
+  color: var(--soft-dark);
+}
+
+.text-primary {
+  color: var(--soft-blue) !important;
+}
+
+.bg-light {
+  background-color: var(--soft-light) !important;
+}
+
+.bg-dark-blue {
+  background-color: var(--soft-dark) !important;
+}
+
+.btn-primary {
+  background-color: var(--soft-blue);
+  border-color: var(--soft-blue);
+}
+
+.btn-outline-primary {
+  color: var(--soft-blue);
+  border-color: var(--soft-blue);
+}
+
+.hero-section {
+  background: linear-gradient(135deg, var(--soft-dark), #122b4a, #15385f);
+  color: #fff;
+}
+
+.inner-hero {
+  background: linear-gradient(135deg, rgba(10, 37, 64, 0.05), rgba(59, 175, 218, 0.05));
+}
+
+.brand-logo {
+  max-height: 40px;
+}
+
+.hero-image-wrapper {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.section-heading p {
+  letter-spacing: 0.12rem;
+}
+
+.bg-soft-primary,
+.bg-soft-blue {
+  background-color: rgba(59, 175, 218, 0.1) !important;
+}
+
+.stat-card .display-5 {
+  font-size: 3rem;
+}
+
+.project-card__image,
+.team-card__image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.team-card,
+.project-card {
+  background-color: #fff;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(10, 37, 64, 0.07);
+}
+
+.team-card__image {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.footer a {
+  transition: opacity 0.2s ease;
+}
+
+.footer a:hover {
+  opacity: 0.8;
+}
+
+.navbar .nav-link {
+  color: var(--soft-dark);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--soft-blue);
+}
+
+.auth-page .btn-group .btn {
+  border-radius: 999px !important;
+}
+
+.admin-dashboard .card {
+  border-radius: 1.5rem;
+}
+
+.table > :not(caption) > * > * {
+  background-color: transparent;
+}
+
+@media (max-width: 767px) {
+  .hero-section .display-4 {
+    font-size: 2.25rem;
+  }
+}
+
