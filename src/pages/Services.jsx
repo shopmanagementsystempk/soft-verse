@@ -32,6 +32,14 @@ const Services = () => {
               {services.map((service) => (
                 <div className="col-md-6 col-lg-4" key={service.id}>
                   <div className="card h-100 border-0 shadow-sm rounded-4">
+                    {service.imageUrl && (
+                      <img
+                        src={service.imageUrl}
+                        alt={service.title}
+                        className="card-img-top"
+                        style={{ height: '180px', objectFit: 'cover' }}
+                      />
+                    )}
                     <div className="card-body p-4">
                       <span className="badge bg-soft-blue text-primary mb-3">
                         {service.category || 'Service'}
@@ -44,6 +52,16 @@ const Services = () => {
                             <li key={item}>• {item}</li>
                           ))}
                         </ul>
+                      )}
+                      {service.ctaText && service.ctaLink && (
+                        <a
+                          href={service.ctaLink}
+                          className="btn btn-outline-primary rounded-pill mt-3"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {service.ctaText}
+                        </a>
                       )}
                     </div>
                   </div>
