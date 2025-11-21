@@ -645,12 +645,16 @@ const AdminDashboard = () => {
         <CollectionManager
           title="Services"
           collectionName="services"
+          storageFolder="services"
           fields={[
             { name: 'title', label: 'Title', required: true },
             { name: 'category', label: 'Category' },
             { name: 'description', label: 'Description', type: 'textarea', required: true },
             { name: 'highlights', label: 'Highlights', type: 'list' },
             { name: 'priority', label: 'Priority', inputType: 'number' },
+            { name: 'ctaText', label: 'CTA text' },
+            { name: 'ctaLink', label: 'CTA link' },
+            { name: 'imageUrl', label: 'Image', type: 'image' },
           ]}
         />
         <CollectionManager
