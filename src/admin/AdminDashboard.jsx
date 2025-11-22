@@ -546,6 +546,13 @@ const ApplicationsManager = () => {
     });
   };
 
+  const handleDelete = async (id, fullName) => {
+    // eslint-disable-next-line no-alert
+    if (window.confirm(`Delete application for ${fullName}? This cannot be undone.`)) {
+      await deleteDoc(doc(db, 'applications', id));
+    }
+  };
+
   const closeDetails = () => setSelectedApp(null);
 
   return (
@@ -593,6 +600,7 @@ const ApplicationsManager = () => {
                           <button type="button" className="btn btn-outline-primary" onClick={() => setSelectedApp(app)}>View details</button>
                           <button type="button" className="btn btn-outline-success" onClick={() => updateStatus(app.id, 'reviewed')}>Mark reviewed</button>
                           <button type="button" className="btn btn-outline-secondary" onClick={() => updateStatus(app.id, 'archived')}>Archive</button>
+                          <button type="button" className="btn btn-outline-danger" onClick={() => handleDelete(app.id, app.fullName)}>Delete</button>
                         </div>
                       </td>
                     </tr>
