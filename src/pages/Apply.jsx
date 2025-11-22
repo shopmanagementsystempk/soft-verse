@@ -90,11 +90,7 @@ const defaultState = {
   role: '',
   responsibilities: '',
   cvFile: null,
-  portfolioLink: '',
-  githubLink: '',
-  linkedinLink: '',
   position: '',
-  expectedSalary: '',
   availability: '',
   shortBio: '',
   jobType: '',
@@ -180,7 +176,6 @@ const Apply = () => {
       'role',
       'responsibilities',
       'position',
-      'expectedSalary',
       'availability',
       'shortBio',
       'jobType',
@@ -381,19 +376,6 @@ const Apply = () => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">Portfolio Link</label>
-              <input type="url" className="form-control" name="portfolioLink" value={formData.portfolioLink} onChange={handleInputChange} />
-            </div>
-            <div className="col-md-6">
-              <label className="form-label fw-semibold">GitHub</label>
-              <input type="url" className="form-control" name="githubLink" value={formData.githubLink} onChange={handleInputChange} />
-            </div>
-            <div className="col-md-6">
-              <label className="form-label fw-semibold">LinkedIn</label>
-              <input type="url" className="form-control" name="linkedinLink" value={formData.linkedinLink} onChange={handleInputChange} />
-            </div>
-
-            <div className="col-md-6">
               <label className="form-label fw-semibold">Position</label>
               <select className="form-select" name="position" value={formData.position} onChange={handleInputChange}>
                 <option value="">Select position</option>
@@ -403,12 +385,7 @@ const Apply = () => {
               </select>
               {errors.position && <small className="text-danger">{errors.position}</small>}
             </div>
-            <div className="col-md-3">
-              <label className="form-label fw-semibold">Expected Salary</label>
-              <input type="text" className="form-control" name="expectedSalary" value={formData.expectedSalary} onChange={handleInputChange} />
-              {errors.expectedSalary && <small className="text-danger">{errors.expectedSalary}</small>}
-            </div>
-            <div className="col-md-3">
+            <div className="col-md-6">
               <label className="form-label fw-semibold">Availability</label>
               <select className="form-select" name="availability" value={formData.availability} onChange={handleInputChange}>
                 <option value="">Select</option>
