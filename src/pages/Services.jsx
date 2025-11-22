@@ -37,7 +37,7 @@ const Services = () => {
                         src={service.imageUrl}
                         alt={service.title}
                         className="card-img-top"
-                        style={{ height: '180px', objectFit: 'cover' }}
+                        style={{ height: '220px', objectFit: 'contain', backgroundColor: '#fff' }}
                       />
                     )}
                     <div className="card-body p-4">
