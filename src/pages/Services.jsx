@@ -53,16 +53,28 @@ const Services = () => {
                           ))}
                         </ul>
                       )}
-                      {service.ctaText && service.ctaLink && (
-                        <a
-                          href={service.ctaLink}
-                          className="btn btn-outline-primary rounded-pill mt-3"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {service.ctaText}
-                        </a>
-                      )}
+                      <div className="mt-3">
+                        {service.websiteUrl && (
+                          <a
+                            href={service.websiteUrl}
+                            className="btn btn-outline-secondary rounded-pill me-2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Preview
+                          </a>
+                        )}
+                        {service.ctaText && service.ctaLink && (
+                          <a
+                            href={service.ctaLink}
+                            className="btn btn-outline-primary rounded-pill"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {service.ctaText}
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
