@@ -20,6 +20,7 @@ import Profile from './pages/Profile';
 import Auth from './pages/Auth';
 import NotFound from './pages/NotFound';
 import AdminDashboard from './admin/AdminDashboard';
+import Apply from './pages/Apply';
 
 const App = () => {
   useEffect(() => {
@@ -44,6 +45,7 @@ const App = () => {
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/apply" element={<Apply />} />
               <Route path="/login" element={<Auth />} />
               <Route
                 path="/profile"
