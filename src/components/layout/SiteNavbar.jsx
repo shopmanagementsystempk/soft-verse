@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { path: '/portfolio', label: 'Portfolio' },
   { path: '/blog', label: 'Blog' },
   { path: '/contact', label: 'Contact' },
+  { path: '/apply', label: 'Apply Now' },
 ];
 
 const SiteNavbar = () => {
@@ -29,16 +30,9 @@ const SiteNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm py-3 sticky-top">
       <div className="container">
-        <Link to="/" className="navbar-brand fw-bold text-primary text-uppercase">
-          {siteSettings?.logoUrl ? (
-            <img
-              src={siteSettings.logoUrl}
-              alt="Soft Verse logo"
-              className="brand-logo"
-            />
-          ) : (
-            'Soft Verse'
-          )}
+        <Link to="/" className="navbar-brand d-flex align-items-center gap-2 fw-bold text-primary text-uppercase">
+          <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Soft Verse logo" className="brand-logo" />
+          <span>Soft Verse</span>
         </Link>
         <button
           className="navbar-toggler border-0"
