@@ -532,6 +532,135 @@ const ContactResponses = () => {
   );
 };
 
+const ApplicationsManager = () => {
+  const { data, loading } = useCollection('applications', {
+    orderByField: 'createdAt',
+    orderDirection: 'desc',
+  });
+  const [selectedApp, setSelectedApp] = useState(null);
+
+  const updateStatus = async (id, status) => {
+    await updateDoc(doc(db, 'applications', id), {
+      status,
+      updatedAt: serverTimestamp(),
+    });
+  };
+
+  const closeDetails = () => setSelectedApp(null);
+
+  return (
+    <div className="card border-0 shadow-sm rounded-4 mb-4">
+      <div className="card-body">
+        <h5 className="fw-bold mb-3">Job Applications</h5>
+        {loading ? (
+          <ContentSkeleton rows={4} />
+        ) : (
+          <>
+            <div className="table-responsive">
+              <table className="table align-middle">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Skills</th>
+                    <th>CV</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((app) => (
+                    <tr key={app.id}>
+                      <td>{app.fullName}</td>
+                      <td>{app.email}</td>
+                      <td>{app.position}</td>
+                      <td>{Array.isArray(app.skills) ? app.skills.join(', ') : ''}</td>
+                      <td>
+                        {app.cvUrl ? (
+                          <a href={app.cvUrl} target="_blank" rel="noreferrer" className="btn btn-sm btn-outline-primary">View CV</a>
+                        ) : (
+                          '—'
+                        )}
+                      </td>
+                      <td>
+                        <span className="badge bg-soft-blue text-primary text-uppercase">
+                          {app.status || 'new'}
+                        </span>
+                      </td>
+                      <td>
+                        <div className="btn-group btn-group-sm">
+                          <button type="button" className="btn btn-outline-primary" onClick={() => setSelectedApp(app)}>View details</button>
+                          <button type="button" className="btn btn-outline-success" onClick={() => updateStatus(app.id, 'reviewed')}>Mark reviewed</button>
+                          <button type="button" className="btn btn-outline-secondary" onClick={() => updateStatus(app.id, 'archived')}>Archive</button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {selectedApp && (
+              <div className={`modal fade show d-block`} style={{ backgroundColor: 'rgba(0,0,0,0.5)' }} tabIndex={-1} role="dialog" aria-hidden="false">
+                <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title">Application Details</h5>
+                      <button type="button" className="btn-close" aria-label="Close" onClick={closeDetails} />
+                    </div>
+                    <div className="modal-body">
+                      <div className="row g-3">
+                        <div className="col-md-6"><strong>Name:</strong> <span className="text-muted">{selectedApp.fullName || '—'}</span></div>
+                        <div className="col-md-6"><strong>Father Name:</strong> <span className="text-muted">{selectedApp.fatherName || '—'}</span></div>
+                        <div className="col-md-6"><strong>Email:</strong> <span className="text-muted">{selectedApp.email || '—'}</span></div>
+                        <div className="col-md-6"><strong>Phone:</strong> <span className="text-muted">{selectedApp.phone || '—'}</span></div>
+                        <div className="col-md-6"><strong>WhatsApp:</strong> <span className="text-muted">{selectedApp.whatsapp || '—'}</span></div>
+                        <div className="col-md-6"><strong>CNIC:</strong> <span className="text-muted">{selectedApp.cnic || '—'}</span></div>
+                        <div className="col-md-6"><strong>Date of Birth:</strong> <span className="text-muted">{selectedApp.dob || '—'}</span></div>
+                        <div className="col-md-6"><strong>Gender:</strong> <span className="text-muted">{selectedApp.gender || '—'}</span></div>
+                        <div className="col-md-6"><strong>City:</strong> <span className="text-muted">{selectedApp.city || '—'}</span></div>
+                        <div className="col-md-6"><strong>Address:</strong> <span className="text-muted">{selectedApp.address || '—'}</span></div>
+                        <div className="col-md-6"><strong>Education Degree:</strong> <span className="text-muted">{selectedApp.educationDegree || '—'}</span></div>
+                        <div className="col-md-6"><strong>Institute:</strong> <span className="text-muted">{selectedApp.educationInstitute || '—'}</span></div>
+                        <div className="col-md-6"><strong>Graduation Year:</strong> <span className="text-muted">{selectedApp.educationYear || '—'}</span></div>
+                        <div className="col-md-6"><strong>Experience (years):</strong> <span className="text-muted">{selectedApp.experienceYears || '—'}</span></div>
+                        <div className="col-md-6"><strong>Previous Company:</strong> <span className="text-muted">{selectedApp.previousCompany || '—'}</span></div>
+                        <div className="col-md-6"><strong>Role:</strong> <span className="text-muted">{selectedApp.role || '—'}</span></div>
+                        <div className="col-md-12"><strong>Responsibilities:</strong> <p className="text-muted mb-0">{selectedApp.responsibilities || '—'}</p></div>
+                        <div className="col-md-12"><strong>Skills:</strong> <p className="text-muted mb-0">{Array.isArray(selectedApp.skills) ? selectedApp.skills.join(', ') : '—'}</p></div>
+                        <div className="col-md-6"><strong>Portfolio:</strong> {selectedApp.portfolioLink ? (<a href={selectedApp.portfolioLink} target="_blank" rel="noreferrer">{selectedApp.portfolioLink}</a>) : (<span className="text-muted">—</span>)}</div>
+                        <div className="col-md-6"><strong>GitHub:</strong> {selectedApp.githubLink ? (<a href={selectedApp.githubLink} target="_blank" rel="noreferrer">{selectedApp.githubLink}</a>) : (<span className="text-muted">—</span>)}</div>
+                        <div className="col-md-6"><strong>LinkedIn:</strong> {selectedApp.linkedinLink ? (<a href={selectedApp.linkedinLink} target="_blank" rel="noreferrer">{selectedApp.linkedinLink}</a>) : (<span className="text-muted">—</span>)}</div>
+                        <div className="col-md-6"><strong>Position:</strong> <span className="text-muted">{selectedApp.position || '—'}</span></div>
+                        <div className="col-md-6"><strong>Expected Salary:</strong> <span className="text-muted">{selectedApp.expectedSalary || '—'}</span></div>
+                        <div className="col-md-6"><strong>Availability:</strong> <span className="text-muted">{selectedApp.availability || '—'}</span></div>
+                        <div className="col-md-6"><strong>Job Type:</strong> <span className="text-muted">{selectedApp.jobType || '—'}</span></div>
+                        <div className="col-md-12"><strong>Short Bio:</strong> <p className="text-muted mb-0">{selectedApp.shortBio || '—'}</p></div>
+                        <div className="col-md-12">
+                          <strong>CV/Resume:</strong>{' '}
+                          {selectedApp.cvUrl ? (
+                            <a href={selectedApp.cvUrl} target="_blank" rel="noreferrer" className="btn btn-sm btn-outline-primary ms-2">Open</a>
+                          ) : (
+                            <span className="text-muted ms-2">—</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" onClick={closeDetails}>Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const UserManager = () => {
   const { data, loading } = useCollection('users', {
     orderByField: 'createdAt',
@@ -694,6 +823,7 @@ const AdminDashboard = () => {
             { name: 'coverImage', label: 'Cover image', type: 'image' },
           ]}
         />
+        <ApplicationsManager />
         <ContactResponses />
         <UserManager />
       </div>
