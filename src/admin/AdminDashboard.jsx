@@ -783,6 +783,7 @@ const AdminDashboard = () => {
             { name: 'priority', label: 'Priority', inputType: 'number' },
             { name: 'ctaText', label: 'CTA text' },
             { name: 'ctaLink', label: 'CTA link' },
+            { name: 'websiteUrl', label: 'Website URL', inputType: 'url' },
             { name: 'imageUrl', label: 'Image', type: 'image' },
           ]}
         />
