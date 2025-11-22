@@ -796,7 +796,7 @@ const AdminDashboard = () => {
             { name: 'role', label: 'Role', required: true },
             { name: 'bio', label: 'Bio', type: 'textarea' },
             { name: 'order', label: 'Order', inputType: 'number' },
-            { name: 'imageUrl', label: 'Photo', type: 'image', required: true },
+            { name: 'imageUrl', label: 'Photo', type: 'image' },
           ]}
         />
         <CollectionManager
