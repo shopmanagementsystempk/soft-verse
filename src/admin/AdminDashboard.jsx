@@ -809,7 +809,7 @@ const AdminDashboard = () => {
             { name: 'summary', label: 'Summary', type: 'textarea' },
             { name: 'ctaUrl', label: 'Case study URL' },
             { name: 'order', label: 'Order', inputType: 'number' },
-            { name: 'imageUrl', label: 'Cover image', type: 'image', required: true },
+            { name: 'imageUrl', label: 'Cover image', type: 'image' },
           ]}
         />
         <CollectionManager
