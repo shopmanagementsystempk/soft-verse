@@ -70,7 +70,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-top border-secondary text-center py-3 text-white-50 small">
-        © {currentYear} Soft Verse. All rights reserved.
+        {/* {currentYear} */}
+      © 2021 Soft Verse. All rights reserved.
       </div>
     </footer>
   );
