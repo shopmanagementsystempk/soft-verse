@@ -62,14 +62,13 @@ const About = () => {
               {leadership.map((member) => (
                 <div className="col-md-4" key={member.id}>
                   <div className="team-card text-center rounded-4 shadow-sm h-100">
-                    <img
-                      src={
-                        member.imageUrl ||
-                        'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80'
-                      }
-                      alt={member.name}
-                      className="team-card__image"
-                    />
+                    {member.imageUrl && (
+                      <img
+                        src={member.imageUrl}
+                        alt={member.name}
+                        className="team-card__image"
+                      />
+                    )}
                     <div className="p-4">
                       <h5 className="fw-bold">{member.name}</h5>
                       <p className="text-primary">{member.role}</p>
