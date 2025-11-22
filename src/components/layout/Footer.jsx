@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="container py-5">
         <div className="row g-4">
           <div className="col-md-4">
-            <SectionHeading title="Soft Verse" subtitle="Innovate with intent" align="start" />
+            <SectionHeading title="Soft Verse" subtitle="Innovate with intent" align="start" invert />
             <p className="text-white-50">
               {siteSettings?.aboutSnippet ||
                 'Soft Verse crafts enterprise-grade digital experiences powered by cloud, data and intelligent automation.'}
