@@ -11,6 +11,11 @@ body {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   background-color: #fff;
   color: var(--soft-dark);
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 .text-primary {
